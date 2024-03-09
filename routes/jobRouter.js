@@ -14,10 +14,7 @@ import { Router } from 'express';
 
 const router = Router();
 
-router
-  .route('/', [])
-  .get(getAllJobs)
-  .post(validateJobInput, validateId, createJob);
+router.route('/').get(getAllJobs).post(validateJobInput, createJob);
 router
   .route('/:id')
   .get(validateId, getSingleJob)
