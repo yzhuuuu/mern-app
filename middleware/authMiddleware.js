@@ -1,7 +1,11 @@
-import { UnauthenticatedError } from '../errors/customErrors.js';
+import {
+  UnauthenticatedError,
+  UnauthorizedError,
+} from '../errors/customErrors.js';
+
 import { verifyJWT } from '../utils/tokenUtils.js';
 
-const authenticateUser = async (req, res, next) => {
+const authenticateUser = (req, res, next) => {
   const { token } = req.cookies;
   if (!token) {
     throw new UnauthenticatedError('Authentication invalid');
@@ -14,5 +18,14 @@ const authenticateUser = async (req, res, next) => {
   } catch (error) {
     throw new UnauthenticatedError('Authentication invalid');
   }
+};
+
+export const authorizePermissions = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      throw new UnauthorizedError('unauthorize to access');
+    }
+    next();
+  };
 };
 export default authenticateUser;

@@ -10,6 +10,7 @@ import express from 'express';
 import jobRouter from './routes/jobRouter.js';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
+import userRouter from './routes/userRouter.js';
 
 // middleware
 const app = express();
@@ -21,9 +22,12 @@ const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-
 app.use('/api/v1/jobs', authenticateUser, jobRouter);
+app.use('/api/v1/users', authenticateUser, userRouter);
 app.use('/api/v1/auth', authRouter);
+app.get('/api/v1/test', (req, res) => {
+  res.json({ msg: 'test route' });
+});
 app.use('*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
