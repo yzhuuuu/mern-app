@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom';
-import { Logo } from '../components/index.js';
-import Wrapper from '../assets/wrappers/LandingPage.js';
-import main from '../assets/images/main.svg';
+import { Link } from "react-router-dom";
+import { Logo } from "../components/index.js";
+import Wrapper from "../assets/wrappers/LandingPage.js";
+import main from "../assets/images/main.svg";
 function Landing() {
   return (
     <Wrapper>
       <nav>
         <Logo />
       </nav>
-      <div className='container page'>
-        <div className='info'>
+      <div className="container page">
+        <div className="info">
           <h1>
             Job <span>Tracking</span> app
           </h1>
@@ -21,14 +21,14 @@ function Landing() {
             aliquam ut porttitor leo a. At ultrices mi tempus imperdiet nulla
             malesuada pellentesque.
           </p>
-          <Link to={'/register'} className='btn register-link'>
+          <Link to={"/register"} className="btn register-link">
             register
           </Link>
-          <Link to={'/register'} className='btn'>
+          <Link to={"/login"} className="btn">
             Login / Demo User
           </Link>
         </div>
-        <img src={main} alt='job hunt' className='img main-img' />
+        <img src={main} alt="job hunt" className="img main-img" />
       </div>
     </Wrapper>
   );
