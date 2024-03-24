@@ -19,7 +19,7 @@ export const loader = async () => {
 function DashboardLayout() {
   const user = useLoaderData();
   const navigate = useNavigate();
-  console.log(user);
+
   const [showSidebar, setShowSidebar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
   const toggleDarkTheme = () => {
